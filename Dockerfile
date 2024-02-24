@@ -25,7 +25,7 @@ RUN apt-get update && \
     apt-get install --yes --no-install-recommends software-properties-common && \
     # As of 2018-04-16 this repo has the latest release of Python 2.7 (2.7.14) \
     # add-apt-repository ppa:jonathonf/python-2.7 && \
-    add-apt-repository ppa:deadsnakes/ppa && \
+    # add-apt-repository ppa:deadsnakes/ppa && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get update && \
