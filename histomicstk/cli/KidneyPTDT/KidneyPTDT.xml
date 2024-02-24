@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <executable>
   <category>HistomicsTK</category>
-  <title>PodoSighter_cnn</title>
-  <description>PodoSighter_cnn</description>
+  <title>KidneyPTDT</title>
+  <description>KidneyPTDT</description>
   <version>0.1.0</version>
   <documentation-url>https://digitalslidearchive.github.io/HistomicsTK/</documentation-url>
   <license>Apache 2.0</license>
-  <contributor>Ujwala Guttikonda (University of Florida)</contributor>
-  <acknowledgements>This work is part of efforts in digital pathology by the Sarder Lab: University of Florida.</acknowledgements>
+  <contributor>Ahmed Naglah (University of Florida)</contributor>
+  <acknowledgements>This work is part of efforts in digital pathology by the Computational Microscopy Imaging Laboratory (CMIL) at the University of Florida.</acknowledgements>
   <parameters>
     <label>IO</label>
     <description>Input/output parameters.</description>
@@ -25,7 +25,7 @@
       <index>1</index>
       <description>Input PAS-stained svs whole slide image</description>
     </image>    
-    <file fileExtensions=".data-00000-of-00001">
+    <file fileExtensions=".pth">
       <name>Model</name>
       <label>Model</label>
       <channel>input</channel>
