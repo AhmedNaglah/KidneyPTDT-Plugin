@@ -18,12 +18,19 @@
       <channel>input</channel>
       <index>0</index>
     </directory>
+    <directory>
+      <name>outputFolder</name>
+      <label>Data Folder Output</label>
+      <description>Select the folder for outputs</description>
+      <channel>input</channel>
+      <index>0</index>
+    </directory>
     <image>
       <name>inputImageFile</name>
       <label>Input PAS whole slide image</label>
       <channel>input</channel>
       <index>1</index>
-      <description>Input PAS-stained svs whole slide image</description>
+      <description>Input PAS-stained image size</description>
     </image>    
     <file fileExtensions=".pth">
       <name>Model</name>
@@ -32,91 +39,31 @@
       <index>3</index>
       <description>Trained Model</description>
     </file>
-    <file fileExtensions="">
-      <name>Modelchkpt</name>
-      <label>Model checkpoint</label>
-      <channel>input</channel>
-      <index>4</index>
-      <description>Trained Model checkpoint</description>
-    </file>
-    <file fileExtensions=".index">
-      <name>Modelidx</name>
-      <label>Model idx</label>
-      <channel>input</channel>
-      <index>5</index>
-      <description>Trained Model index (*.index)</description>
-    </file>
-    <file fileExtensions=".csv">
-      <name>csvfilename</name>
-      <label>CSV filename</label>
-      <channel>output</channel>
-      <index>8</index>
-      <description>CSV filename containing podocyte volume density information</description>
-    </file>
   </parameters>
   <parameters advanced="true">
     <label>UserParameters</label>
     <description>User Parameters</description>
     <double>
-      <name>tissue_thickness</name>
-      <label>Tissue Thickness</label>
-      <description>Enter the tissue thickness (in microns) </description>
-      <longflag>tissue_thickness</longflag>
-      <default>2.0</default>
-    </double>
-    <double>
-      <name>PASnucleiThreshold</name>
-      <label>PAS nuclei intensity threshold</label>
-      <description>PAS nuclei Threshold between 0 and 1 (default 0.4) </description>
-      <longflag>PASnucleiThreshold</longflag>
-      <default>0.4</default>
+      <name>resize</name>
+      <label>resize</label>
+      <description>resize factor 1=1x, 2=2x, .5 = .5x (default 1.0)</description>
+      <longflag>resize</longflag>
+      <default>1.0</default>
     </double>
     <integer>
-      <name>gauss_filt_size</name>
-      <label>Gaussian filter size</label>
-      <description>Gaussian blur filter size (default 5)</description>
-      <longflag>gauss_filt_size</longflag>
-      <default>5</default>
+      <name>batchsize</name>
+      <label>batchsize</label>
+      <description>Batch size for model training (default 10)</description>
+      <longflag>batchsize</longflag>
+      <default>10</default>
     </integer>
     <integer>
-      <name>Disc_size</name>
-      <label>Morphological disc size</label>
-      <description>Morphological processing disc_size (default 6)</description>
-      <longflag>Disc_size</longflag>
-      <default>6</default>
+      <name>patchsize</name>
+      <label>patchsize</label>
+      <description>Image Size for model input (default 256)</description>
+      <longflag>patchsize</longflag>
+      <default>256</default>
     </integer>
-    <string-enumeration>
-      <name>species</name>
-      <longflag>species</longflag>
-      <label>species</label>
-      <description>Type of Analysis: "Human Analysis" or "Mouse Analysis" or "Rat Analysis"</description>
-      <default>Human</default>
-      <element>Human</element>
-      <element>Mouse</element>
-      <element>Rat</element>
-      <index>0</index>
-    </string-enumeration>
-    <integer>
-      <name>resolution</name>
-      <label>resolution</label>
-      <description>For high resolution analysis select 0 and for one-fourth select 1 (default 0)</description>
-      <longflag>resolution</longflag>
-      <default>0</default>
-    </integer>
-    <integer>
-      <name>size_thre</name>
-      <label>Nuclear size threshold</label>
-      <description>Nuclei size threshold (default 400)</description>
-      <longflag>size_thre</longflag>
-      <default>400</default>
-    </integer>
-    <double>
-      <name>watershed_thre</name>
-      <label>watershed_thre</label>
-      <description>Watershed distance threshold (default 0.2)</description>
-      <longflag>watershed_thre</longflag>
-      <default>0.2</default>
-    </double>
     <label>Girder API URL and Key</label>
     <description>A Girder API URL and token for Girder client</description>
     <string>

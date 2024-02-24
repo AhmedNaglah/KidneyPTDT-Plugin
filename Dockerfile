@@ -7,10 +7,10 @@
 
 # start from nvidia/cuda 10.0
 # FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
-FROM tensorflow/tensorflow:1.15.4-gpu-py3
+FROM python:3.7
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
-LABEL maintainer="Ujwala Guttikonda - Sarder Lab. <ujwalaguttikonda@ufl.edu>"
+LABEL maintainer="Ahmed Naglah - University of Florida CMIL Lab. <ahmed.naglah@ufl.edu>"
 
 CMD echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! STARTING THE BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # RUN mkdir /usr/local/nvidia && ln -s /usr/local/cuda-10.0/compat /usr/local/nvidia/lib
@@ -109,7 +109,7 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     # Install GPU version of tensorflow
     # pip install --no-cache-dir 'tensorflow-gpu==1.14.0' && \
     # Install tf-slim
-    pip install --no-cache-dir 'tf-slim>=1.1.0' && \
+    # pip install --no-cache-dir 'tf-slim>=1.1.0' && \
     # Install pillow_lut
     pip install --no-cache-dir 'pillow-lut' && \
     # Install openpyxl
@@ -119,6 +119,11 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     pip install --no-cache-dir umap-learn && \
     # Install visdom
     pip install --no-cache-dir 'visdom>=0.1.8.8' && \
+    # Install Dependencies
+    pip install --no-cache-dir 'scikit-learn==0.22.0' && \
+    pip install --no-cache-dir torch && \
+    pip install --no-cache-dir opencv-python && \
+
     # clean up
     rm -rf /root/.cache/pip/*
 
@@ -134,6 +139,6 @@ WORKDIR $htk_path/histomicstk/cli
 # Test our entrypoint.  If we have incompatible versions of numpy and
 # openslide, one of these will fail
 RUN python -m slicer_cli_web.cli_list_entrypoint --list_cli
-RUN python -m slicer_cli_web.cli_list_entrypoint PodoSighter_cnn --help
+RUN python -m slicer_cli_web.cli_list_entrypoint kidneyhistologicprimitives --help
 
 ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]
