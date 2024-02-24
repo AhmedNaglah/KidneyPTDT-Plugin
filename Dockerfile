@@ -33,21 +33,13 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     git \
     wget \
-    python-qt4 \
-    python3-pyqt4 \
     curl \
     ca-certificates \
     libcurl4-openssl-dev \
     libexpat1-dev \
     unzip \
     libhdf5-dev \
-    libpython-dev \
     libpython3-dev \
-    python2.7-dev \
-    python-tk \
-    python3.6-dev \
-    python3.6-distutils \
-    python3-tk \
     software-properties-common \
     libssl-dev \   
     build-essential \
