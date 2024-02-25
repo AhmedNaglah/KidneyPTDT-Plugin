@@ -19,8 +19,8 @@ CMD echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! STARTING THE BUILD !!!!!!!!!!!!!!!!!!!
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
-# RUN rm /etc/apt/sources.list.d/cuda.list
-# RUN rm /etc/apt/sources.list.d/nvidia-ml.list
+RUN rm /etc/apt/sources.list.d/cuda.list
+RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends software-properties-common && \
@@ -29,6 +29,9 @@ RUN apt-get update && \
     # add-apt-repository ppa:deadsnakes/ppa && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get clean
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get --yes --no-install-recommends -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-unauthenticated --no-install-recommends \
@@ -40,7 +43,7 @@ RUN apt-get update && \
     libexpat1-dev \
     unzip \
     libhdf5-dev \
-    libpython3-dev \
+    #libpython3-dev \
     software-properties-common \
     libssl-dev \   
     build-essential \
