@@ -78,6 +78,7 @@ RUN apt update
 RUN apt install software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt -y install python3.7
+RUN apt install python3-pip
 
 WORKDIR /
 # Make Python3 the default and install pip.  Whichever is done last determines
