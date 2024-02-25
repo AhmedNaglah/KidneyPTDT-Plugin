@@ -51,9 +51,12 @@ device = torch.device(args.gpuid if torch.cuda.is_available() else 'cpu')
 _ = os.system(str(device))
 
 device = torch.device('cpu')
+
+_ = os.system("printing inside algorithm")
 _ = os.system(str(device))
 
 _ = os.system(args.model)
+
 
 checkpoint = torch.load(args.model, map_location=lambda storage, loc: storage) #load checkpoint to CPU and then put to device https://discuss.pytorch.org/t/saving-and-loading-torch-models-on-2-machines-with-different-number-of-gpu-devices/6666
 model = UNet(n_classes=checkpoint["n_classes"], in_channels=checkpoint["in_channels"],
