@@ -41,5 +41,6 @@ def main(args2):
     
     os.system(cmd)    
 
+
 if __name__ == "__main__":
     main(CLIArgumentParser().parse_args())
