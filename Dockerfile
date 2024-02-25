@@ -77,7 +77,7 @@ RUN apt-get install 'ffmpeg'\
 RUN apt update
 RUN apt install software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt install python3.7
+RUN apt -y install python3.7
 
 WORKDIR /
 # Make Python3 the default and install pip.  Whichever is done last determines
