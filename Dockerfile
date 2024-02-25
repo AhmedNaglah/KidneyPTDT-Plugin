@@ -9,9 +9,8 @@
 # FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 #FROM python:3.7
 #FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-devel
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+FROM ubuntu/ubuntu:20.04
 LABEL com.nvidia.volumes.needed="nvidia_driver"
-
 LABEL maintainer="Ahmed Naglah - University of Florida CMIL Lab. <ahmed.naglah@ufl.edu>"
 
 CMD echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! STARTING THE BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -61,11 +60,24 @@ RUN apt-get update && \
 
 CMD echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHECKPOINT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+RUN curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+    && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+RUN apt-get update
+RUN apt-get install -y nvidia-container-toolkit
+
 RUN apt-get update ##[edited]
 RUN apt-get install 'ffmpeg'\
     'libsm6'\
     'libxext6'  -y
 
+
+RUN apt update
+RUN apt install software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python3.7
 
 WORKDIR /
 # Make Python3 the default and install pip.  Whichever is done last determines
