@@ -153,7 +153,7 @@ WORKDIR $htk_path/histomicstk/cli
 
 # Test our entrypoint.  If we have incompatible versions of numpy and
 # openslide, one of these will fail
-RUN python -m slicer_cli_web.cli_list_entrypoint --list_cli
-RUN python -m slicer_cli_web.cli_list_entrypoint KidneyPTDT --help
+RUN python3 -m slicer_cli_web.cli_list_entrypoint --list_cli
+RUN python3 -m slicer_cli_web.cli_list_entrypoint KidneyPTDT --help
 
 ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]
