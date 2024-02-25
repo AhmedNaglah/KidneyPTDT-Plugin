@@ -114,7 +114,7 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     pip install --no-cache-dir 'visdom>=0.1.8.8' && \
     # Install Dependencies
     pip install --no-cache-dir 'scikit-learn==0.22.0' && \
-    pip install --no-cache-dir torch && \
+    #pip install --no-cache-dir torch && \
     pip install --no-cache-dir opencv-python && \
 
     # clean up
