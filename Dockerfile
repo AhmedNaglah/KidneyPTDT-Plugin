@@ -8,7 +8,8 @@
 # start from nvidia/cuda 10.0
 # FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 #FROM python:3.7
-FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-devel
+#FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-devel
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 LABEL maintainer="Ahmed Naglah - University of Florida CMIL Lab. <ahmed.naglah@ufl.edu>"
@@ -93,10 +94,10 @@ WORKDIR $htk_path
 # Install HistomicsTK and its dependencies
 #   Upgrade setuptools, as the version in Conda won't upgrade cleanly unless it
 # is ignored.
-RUN apt-get update && \
-    apt-get install -y libglib2.0.0 libsm6 && \
-    apt-get install libxext6 && \
-    apt-get install -y libxrender-dev 
+# RUN apt-get update && \
+#    apt-get install -y libglib2.0.0 libsm6 && \
+#    apt-get install libxext6 && \
+#    apt-get install -y libxrender-dev 
 
 RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     # Install bokeh to help debug dask
@@ -122,9 +123,9 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     pip install --no-cache-dir 'visdom>=0.1.8.8' && \
     # Install Dependencies
     pip install --no-cache-dir 'scikit-learn==0.22.0' && \
-    pip3 install --no-cache-dir opencv-contrib-python && \
-    #pip install --no-cache-dir torch && \
-    #pip install --no-cache-dir opencv-python && \
+    # pip3 install --no-cache-dir opencv-contrib-python && \
+    pip install --no-cache-dir torch && \
+    pip install --no-cache-dir opencv-python && \
     # clean up
     rm -rf /root/.cache/pip/*
 
