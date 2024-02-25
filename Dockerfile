@@ -93,6 +93,9 @@ WORKDIR $htk_path
 # Install HistomicsTK and its dependencies
 #   Upgrade setuptools, as the version in Conda won't upgrade cleanly unless it
 # is ignored.
+
+RUN apt-get install python3-opencv
+
 RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     # Install bokeh to help debug dask
     pip install --no-cache-dir 'bokeh>=0.12.14' && \
@@ -118,7 +121,7 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     # Install Dependencies
     pip install --no-cache-dir 'scikit-learn==0.22.0' && \
     #pip install --no-cache-dir torch && \
-    pip install --no-cache-dir opencv-python && \
+    #pip install --no-cache-dir opencv-python && \
 
     # clean up
     rm -rf /root/.cache/pip/*
