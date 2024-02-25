@@ -146,7 +146,7 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
 RUN pip freeze
 
 # pregenerate font cache
-RUN python -c "from matplotlib import pylab"
+# RUN python -c "from matplotlib import pylab"
 
 # define entrypoint through which all CLIs can be run
 WORKDIR $htk_path/histomicstk/cli
