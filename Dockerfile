@@ -7,7 +7,8 @@
 
 # start from nvidia/cuda 10.0
 # FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
-FROM python:3.7
+#FROM python:3.7
+FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-devel
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 LABEL maintainer="Ahmed Naglah - University of Florida CMIL Lab. <ahmed.naglah@ufl.edu>"
