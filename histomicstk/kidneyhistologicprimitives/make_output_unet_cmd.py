@@ -11,6 +11,8 @@ import sklearn.feature_extraction.image
 
 from unet import UNet
 
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+
 #-----helper function to split data into batches
 def divide_batch(l, n): 
     for i in range(0, l.shape[0], n):  
