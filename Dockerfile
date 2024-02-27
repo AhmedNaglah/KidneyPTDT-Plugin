@@ -80,6 +80,9 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt -y install python3.7
 RUN apt -y install python3-pip
 
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip
+
 WORKDIR /
 # Make Python3 the default and install pip.  Whichever is done last determines
 # the default python version for pip.
