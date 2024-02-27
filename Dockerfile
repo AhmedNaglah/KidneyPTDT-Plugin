@@ -141,6 +141,7 @@ RUN pip install --no-cache-dir --upgrade --ignore-installed pip setuptools && \
     # pip3 install --no-cache-dir opencv-contrib-python && \
     pip install --no-cache-dir torch && \
     pip install --no-cache-dir opencv-python && \
+    pip install --no-cache-dir numpy==1.20.0 && \
     # clean up
     rm -rf /root/.cache/pip/*
 
