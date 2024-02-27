@@ -18,7 +18,7 @@ CMD echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! STARTING THE BUILD !!!!!!!!!!!!!!!!!!!
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-
+ENV DSA_USER=1001
 #RUN rm /etc/apt/sources.list.d/cuda.list
 #RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 

@@ -50,7 +50,7 @@ stride_size = patch_size//2
 device = torch.device(args.gpuid if torch.cuda.is_available() else 'cpu')
 _ = os.system(str(device))
 
-device = torch.device('cpu')
+# device = torch.device('cpu')
 
 _ = os.system("printing inside algorithm")
 _ = os.system(str(device))
