@@ -11,7 +11,8 @@ import sklearn.feature_extraction.image
 
 from unet import UNet
 
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2"
 
 #-----helper function to split data into batches
 def divide_batch(l, n): 
