@@ -5,16 +5,16 @@ import os
 import sys
 
 from setuptools import find_packages
-
-try:
-    from skbuild import setup
-except ImportError:
-    sys.stderr.write("""scikit-build is required to build from source or run tox.
-Please run:
-  python -m pip install scikit-build
-""")
-    # from setuptools import setup
-    sys.exit(1)
+from setuptools import setup
+# try:
+#     from skbuild import setup
+# except ImportError:
+#     sys.stderr.write("""scikit-build is required to build from source or run tox.
+# Please run:
+#   python -m pip install scikit-build
+# """)
+#     # from setuptools import setup
+#     sys.exit(1)
 
 
 with open('README.rst', 'rt') as readme_file:
@@ -55,24 +55,21 @@ setup(
     install_requires=[
         # scientific packages
         'nimfa>=1.3.2',
-        'numpy>=1.12.1',
+        'numpy==1.22.4',
         'scipy>=0.19.0',
         'Pillow>=3.2.0',
         'pandas>=0.19.2',
         'scikit-image>=0.14.2',
-        'scikit-learn>=0.18.1' + ('' if sys.version_info >= (3, ) else ',<0.21'),
-        'imageio>=2.3.0' + ('' if sys.version_info >= (3, ) else ',<2.8'),
-        'shapely[vectorized]',
-        'opencv-python',
-        'sqlalchemy',
-        'matplotlib',
+        'scikit-learn==0.22',
+        # 'imageio>=2.3.0' + ('' if sys.version_info >= (3, ) else ',<2.8'),
         'pyvips',
+        'opencv-python',
         # dask packages
         'dask[dataframe]>=1.1.0',
         'distributed>=1.21.6',
         # large image sources
-        'large-image[sources]',
         'girder-slicer-cli-web',
+        'girder-client',
         # cli
         'ctk-cli',
     ],

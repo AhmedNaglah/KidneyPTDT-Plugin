@@ -11,6 +11,12 @@ import sklearn.feature_extraction.image
 
 from unet import UNet
 
+print(torch.cuda.is_available())
+print(torch.cuda.device_count())
+curr_device = torch.cuda.current_device()
+print(curr_device)
+os.environ["CUDA_VISIBLE_DEVICES"] = str(curr_device)
+
 #-----helper function to split data into batches
 def divide_batch(l, n): 
     for i in range(0, l.shape[0], n):  
@@ -66,7 +72,7 @@ model.load_state_dict(checkpoint["model_dict"])
 model.eval()
 
 print(f"total params: \t{sum([np.prod(p.size()) for p in model.parameters()])}")
-
+print('herererer')
 # ----- get file list
 
 if not os.path.exists(OUTPUT_DIR):
@@ -156,6 +162,6 @@ for fname in files:
     output = output[0:io_shape_orig[0], 0:io_shape_orig[1], :] #remove paddind, crop back
 
     # --- save output
-
+    print(output[0][0],'this is output')
     # cv2.imwrite(newfname_class, (output.argmax(axis=2) * (256 / (output.shape[-1] - 1) - 1)).astype(np.uint8))
     cv2.imwrite(newfname_class, output.argmax(axis=2) * (256 / (output.shape[-1] - 1) - 1))

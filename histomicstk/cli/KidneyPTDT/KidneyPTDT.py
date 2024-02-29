@@ -1,12 +1,6 @@
 import os
-import sys
-from glob import glob
 import girder_client
 from ctk_cli import CLIArgumentParser
-
-sys.path.append("..")
-from deeplab.utils.mask_to_xml import xml_create, xml_add_annotation, xml_add_region, xml_save
-from deeplab.utils.xml_to_mask import write_minmax_to_xml
 
 def main(args2):
     base_dir_id = args2.inputFolder.split('/')[-2]
